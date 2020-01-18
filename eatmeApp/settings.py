@@ -16,7 +16,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
-    'menu',
+    'menu.apps.MenuConfig',
+    'django_cleanup',
+    'geoposition',
 ]
 
 MIDDLEWARE = [
@@ -89,4 +91,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

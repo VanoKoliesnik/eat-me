@@ -1,32 +1,70 @@
-# from django.db import models
+from django.db import models
 
-# class Cuisine(models.Model):
-#     name = models.CharField(max_length='30', blank=True, null='True', verbose_name='Назва')
 
-#     class Meta:
-#         verbose_name = 'Кухня'
-#         verbose_name_plural='Кухни'
+class Cuisine(models.Model):
+    name = models.CharField(max_length=30, blank=True, null='True', verbose_name='Назва')
 
-#     def __str__(self):
-#         return self.name
+    class Meta:
+        verbose_name = 'Кухня'
+        verbose_name_plural='Кухні'
 
-# class FoodCategory(models.Model):
-#     name = models.CharField(max_length='30', blank=True, null='True', verbose_name='Назва')
+    def __str__(self):
+        return self.name
 
-#     class Meta:
-#         verbose_name = 'Категорія'
-#         verbose_name_plural='Категорії'
 
-#     def __str__(self):
-#         return self.name
+class Category(models.Model):
+    name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Назва')
 
-# class Dish(models.Model):
-#     name = models.CharField(max_length='150', blank=True, null='True', verbose_name='Назва')
-#     image = models.ImageField(upload_to='image', verbose_name='Зображення')
+    class Meta:
+        verbose_name = 'Категорія'
+        verbose_name_plural='Категорії'
 
-#     class Meta:
-#         verbose_name = 'Страв'
-#         verbose_name_plural = 'Страви'
+    def __str__(self):
+        return self.name
 
-#     def __str__(self):
-#         return self.name
+
+class Dish(models.Model):
+    AVAILABLE = 'available'
+    ENDS = 'ends'
+    ABSENT = 'absent'
+
+    STATE_CHOICES = [
+        (AVAILABLE, 'В наявності'),
+        (ENDS, 'Закінчується'),
+        (ABSENT, 'Відсутня'),
+    ]
+
+    name = models.CharField(max_length=150, blank=True, null=True, verbose_name='Назва')
+    cuisine = models.ForeignKey(Cuisine, on_delete=models.PROTECT, verbose_name='Кухня' , blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категорія', blank=True, null=True)
+    image = models.ImageField(upload_to='foodImages', verbose_name='Зображення', null=True, blank=True)
+    price = models.FloatField(default=0, verbose_name='Ціна')
+    weight = models.FloatField(default=0, verbose_name='Вага')
+    composition = models.TextField(verbose_name='Склад', blank=True, null=True)
+    calorie = models.FloatField(default=0, verbose_name='Калорії')
+    state = models.CharField(max_length=302, choices=STATE_CHOICES, default=AVAILABLE, verbose_name='Стан')
+
+    class Meta:
+        verbose_name = 'Страв'
+        verbose_name_plural = 'Страви'
+
+    def __str__(self):
+        return self.name
+
+class Institution(models.Model):
+    name = models.CharField(max_length=50, blank=True, null=True, verbose_name='Назва')
+    image = models.ImageField(upload_to='institutionImages', verbose_name='Зображення', null=True, blank=True)
+    cuisine = models.ManyToManyField(Cuisine, verbose_name='Кухня')
+    menu = models.ManyToManyField(Dish, verbose_name='Меню')
+    about = models.TextField(verbose_name='Про заклад')
+    timeFrom = models.TimeField(verbose_name='От')
+    timeBefore = models.TimeField(verbose_name='До')
+    position = models.CharField(max_length=100, verbose_name='Адреса')
+
+
+    class Meta:
+        verbose_name = 'Заклад'
+        verbose_name_plural = 'Заклади'
+
+    def __str__(self):
+        return self.name
