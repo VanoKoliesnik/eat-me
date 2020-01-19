@@ -9,16 +9,17 @@ admin.site.unregister(Group)
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'last_name', 'phone', 'email')
-    list_display_links = ('id' , 'first_name', 'last_name', 'phone', 'email')
+    list_display = ('id', 'username', 'first_name', 'last_name', 'phone', 'email')
+    list_display_links = ('id', 'username', 'first_name', 'last_name', 'phone', 'email')
     fieldsets = (
-        ('Information', {
+        ('Загальна інформація', {
             'fields': ('first_name', 'last_name', 'phone')
         }),
-        ('Authentication and Authorization', {
+        ('Авторизація', {
             'fields': ('username', 'email', 'password')
         }),
     )
+    search_fields = ['id', 'username', 'first_name', 'last_name', 'phone', 'email']
 
     def save_model(self, request, obj, form, change):
         if len(obj.password) < 32:

@@ -52,13 +52,14 @@ class Dish(models.Model):
 
 class Institution(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True, verbose_name='Назва')
+    phone = models.CharField(max_length=12, blank=True, verbose_name='Мобільний телефон', unique=True)
     image = models.ImageField(upload_to='institutionImages', verbose_name='Зображення', null=True, blank=True)
-    cuisine = models.ManyToManyField(Cuisine, verbose_name='Кухня')
-    menu = models.ManyToManyField(Dish, verbose_name='Меню')
-    about = models.TextField(verbose_name='Про заклад')
-    timeFrom = models.TimeField(verbose_name='От')
-    timeBefore = models.TimeField(verbose_name='До')
-    position = models.CharField(max_length=100, verbose_name='Адреса')
+    cuisine = models.ManyToManyField(Cuisine, verbose_name='Кухня', blank=True, null=True)
+    menu = models.ManyToManyField(Dish, verbose_name='Меню', blank=True, null=True)
+    about = models.TextField(verbose_name='Про заклад', blank=True, null=True)
+    timeFrom = models.TimeField(verbose_name='Від', blank=True, null=True)
+    timeBefore = models.TimeField(verbose_name='До', blank=True, null=True)
+    position = models.CharField(max_length=100, verbose_name='Адреса', blank=True, null=True)
 
 
     class Meta:
