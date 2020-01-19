@@ -17,8 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
     'menu.apps.MenuConfig',
+    'order.apps.OrderConfig',
     'django_cleanup',
-    'geoposition',
+
 ]
 
 MIDDLEWARE = [
