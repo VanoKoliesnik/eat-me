@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8c040b2-f0f9-4808-ae4a-5f17e1c64a1b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eatmeApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/eatmeApp/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="a8c040b2-f0f9-4808-ae4a-5f17e1c64a1b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +208,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" show_stripe_button="false" sideWeight="0.50065875" side_tool="true" weight="0.33227175" />
