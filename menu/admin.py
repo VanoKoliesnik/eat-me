@@ -3,15 +3,30 @@ from .models import Dish, Cuisine, Category, Institution
 
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
-    pass
+    fieldsets = (
+        ('Загальна інформація', {
+            'fields': ('name', 'image', 'price', 'cuisine', 'category', 'composition')
+        }),
+        ('Додаткова інформація', {
+            'fields': [('weight', 'calorie')]
+        }),
+        ('Стан', {
+            'fields': ['state']
+        }),
+    )
+    list_display = ['name', 'price', 'state', 'cuisine', 'category', 'weight']
 
 @admin.register(Cuisine)
 class CuisineAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name']
+    list_display_links = ['name']
+    search_fields = ['name']
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name']
+    list_display_links = ['name']
+    search_fields = ['name']
 
 @admin.register(Institution)
 class InstitutionAdmin(admin.ModelAdmin):

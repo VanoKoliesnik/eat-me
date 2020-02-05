@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'menu.apps.MenuConfig',
     'order.apps.OrderConfig',
     'django_cleanup',
+    'rest_framework',
 
 ]
 

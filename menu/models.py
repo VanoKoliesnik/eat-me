@@ -37,11 +37,11 @@ class Dish(models.Model):
     cuisine = models.ForeignKey(Cuisine, on_delete=models.PROTECT, verbose_name='Кухня' , blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категорія', blank=True, null=True)
     image = models.ImageField(upload_to='foodImages', verbose_name='Зображення', null=True, blank=True)
-    price = models.FloatField(default=0, verbose_name='Ціна')
-    weight = models.FloatField(default=0, verbose_name='Вага')
+    price = models.FloatField(default=0, verbose_name='Ціна', null=True, blank=True)
+    weight = models.FloatField(default=0, verbose_name='Вага', null=True, blank=True)
     composition = models.TextField(verbose_name='Склад', blank=True, null=True)
-    calorie = models.FloatField(default=0, verbose_name='Калорії')
-    state = models.CharField(max_length=302, choices=STATE_CHOICES, default=AVAILABLE, verbose_name='Стан')
+    calorie = models.FloatField(default=0, verbose_name='Калорії', null=True, blank=True)
+    state = models.CharField(max_length=302, choices=STATE_CHOICES, default=AVAILABLE, verbose_name='Стан', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Страв'
@@ -54,8 +54,8 @@ class Institution(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True, verbose_name='Назва')
     phone = models.CharField(max_length=12, blank=True, verbose_name='Мобільний телефон', unique=True)
     image = models.ImageField(upload_to='institutionImages', verbose_name='Зображення', null=True, blank=True)
-    cuisine = models.ManyToManyField(Cuisine, verbose_name='Кухня', blank=True, null=True)
-    menu = models.ManyToManyField(Dish, verbose_name='Меню', blank=True, null=True)
+    cuisine = models.ManyToManyField(Cuisine, verbose_name='Кухня', blank=True)
+    menu = models.ManyToManyField(Dish, verbose_name='Меню', blank=True)
     about = models.TextField(verbose_name='Про заклад', blank=True, null=True)
     timeFrom = models.TimeField(verbose_name='Від', blank=True, null=True)
     timeBefore = models.TimeField(verbose_name='До', blank=True, null=True)
