@@ -7,8 +7,8 @@ SECRET_KEY = '2ewy&%6e#(3$w$@34svoc2onhu43%v&*85jw1xjz0xomd!^f_3'
 
 DEBUG = True
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['eatmeapi.herokuapp.com']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['eatmeapi.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,14 +56,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eatmeApp.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
-DATABASES = { 'default': dj_database_url.config(conn_max_age=500) }
+# DATABASES = { 'default': dj_database_url.config(conn_max_age=500) }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
