@@ -19,6 +19,25 @@ class FastCostumerList(APIView):
             return Response(serializer.data, status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class GetAccount(APIView):
+
+    def get(self, request, id, format=None):
+        user = Account.objects.get(id=id)
+        serializer = AccountSerializer(user)
+        return Response(serializer.data)
+
+    def get_object(self, id):
+        return Account.objects.get(id=id)
+
+    def patch(self, request, id):
+        testmodel_object = self.get_object(id)
+        serializer = AccountSerializer(testmodel_object, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 class AccountList(APIView):
 
@@ -33,3 +52,5 @@ class AccountList(APIView):
             serializer.save()
             return Response(serializer.data, status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+

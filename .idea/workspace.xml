@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a8c040b2-f0f9-4808-ae4a-5f17e1c64a1b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eatmeApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/eatmeApp/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,10 +23,22 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="19" column="78" selection-start-line="9" selection-start-column="4" selection-end-line="19" selection-end-column="78" />
+            <state relative-caret-position="460">
+              <caret line="34" column="33" lean-forward="true" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/account/api/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eatmeApp/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="72">
+              <caret line="57" selection-start-line="57" selection-start-column="2" selection-end-line="62" selection-end-column="3" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -69,31 +83,19 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/menu/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="1008">
               <caret line="42" column="89" selection-start-line="42" selection-start-column="89" selection-end-line="42" selection-end-column="89" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="96">
               <caret line="4" column="85" selection-start-line="4" selection-start-column="85" selection-end-line="4" selection-end-column="85" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/account/api/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="62" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,14 +154,12 @@
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/order/admin.py" />
-        <option value="$PROJECT_DIR$/account/api/urls.py" />
         <option value="$PROJECT_DIR$/order/signals.py" />
         <option value="$PROJECT_DIR$/order/apps.py" />
         <option value="$PROJECT_DIR$/account/apps.py" />
         <option value="$PROJECT_DIR$/account/admin.py" />
         <option value="$PROJECT_DIR$/account/signals.py" />
         <option value="$PROJECT_DIR$/account/api/serializers.py" />
-        <option value="$PROJECT_DIR$/account/api/views.py" />
         <option value="$PROJECT_DIR$/order/api/__init__.py" />
         <option value="$PROJECT_DIR$/order/api/views.py" />
         <option value="$PROJECT_DIR$/menu/api/__init__.py" />
@@ -169,9 +169,11 @@
         <option value="$PROJECT_DIR$/eatmeApp/urls.py" />
         <option value="$PROJECT_DIR$/menu/api/views.py" />
         <option value="$PROJECT_DIR$/menu/api/serializers.py" />
-        <option value="$PROJECT_DIR$/eatmeApp/settings.py" />
         <option value="$PROJECT_DIR$/menu/models.py" />
         <option value="$PROJECT_DIR$/account/models.py" />
+        <option value="$PROJECT_DIR$/account/api/urls.py" />
+        <option value="$PROJECT_DIR$/account/api/views.py" />
+        <option value="$PROJECT_DIR$/eatmeApp/settings.py" />
       </list>
     </option>
   </component>
@@ -219,6 +221,17 @@
               <item name="eat-me" type="b2602c69:ProjectViewProjectNode" />
               <item name="eat-me" type="462c0819:PsiDirectoryNode" />
               <item name="account" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eat-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-me" type="462c0819:PsiDirectoryNode" />
+              <item name="account" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eat-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-me" type="462c0819:PsiDirectoryNode" />
+              <item name="eatmeApp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eat-me" type="b2602c69:ProjectViewProjectNode" />
@@ -302,8 +315,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3280757" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49934125" visible="true" weight="0.29578948" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1546875" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49934125" visible="true" weight="0.29022083" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.079166666" />
       <window_info anchor="bottom" id="Docker" order="7" />
       <window_info anchor="right" id="Database" order="4" weight="0.32916668" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -312,11 +325,11 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3280757" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,26 +643,6 @@
     <entry file="file://$PROJECT_DIR$/menu/api/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/account/api/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" selection-end-line="7" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account/api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="19" column="78" selection-start-line="9" selection-start-column="4" selection-end-line="19" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -710,29 +703,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eatmeApp/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/menu/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="1008">
           <caret line="42" column="89" selection-start-line="42" selection-start-column="89" selection-end-line="42" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/account/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="96">
           <caret line="4" column="85" selection-start-line="4" selection-start-column="85" selection-end-line="4" selection-end-column="85" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="34" column="33" lean-forward="true" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eatmeApp/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="57" selection-start-line="57" selection-start-column="2" selection-end-line="62" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
