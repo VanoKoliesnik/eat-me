@@ -9,7 +9,7 @@ class OrderAdmin(admin.ModelAdmin):
             'fields': [('name', 'surname'), 'customerPhone']
         }),
         ('Інформація про замовлення', {
-            'fields': ['paymentMethod', 'orderList', 'totalPrice', 'totalQuantity']
+            'fields': ['paymentMethod', 'orderList', 'totalPrice', 'totalQuantity', 'orderDetail']
         }),
         ('Статус оплати', {
             'fields': ['paid']

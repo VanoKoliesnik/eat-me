@@ -29,6 +29,7 @@ class Order(models.Model):
         max_length=50, choices=PAYMENT_CHOICES, default=ONLINE, verbose_name='Спосіб оплати', blank=True)
     orderList = models.ManyToManyField(
         Dish, verbose_name='Зміст замовлення', blank=True)
+    orderDetail = models.TextField('Подробиці', max_length=10000, blank=True, null=True)
     orderTime = models.DateTimeField(
         auto_now_add=True, blank=True, null=True, verbose_name='Дата замовлення')
     totalPrice = models.IntegerField(
