@@ -9,11 +9,13 @@ import EstablishmentsList from "../components/EstablishmentsList";
 const Establishments = () => {
 	return (
 		<>
-			<Header inverted />
+			<Header />
+
 			<Grid padded>
 				<Grid.Column mobile={16} tablet={5} computer={5} largeScreen={4} widescreen={3}>
 					<FilterEstablishmentsCategoriesCuisines />
 				</Grid.Column>
+
 				<Grid.Column mobile={16} tablet={11} computer={11} largeScreen={12} widescreen={13}>
 					<Segment.Group>
 						<Segment>

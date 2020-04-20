@@ -11,6 +11,7 @@ import dishesReducer from "./fetchedReducers/dishesReducer";
 import ordersReduce from "./fetchedReducers/ordersReducer";
 
 import searchReducer from "./searchReducer";
+import orderReducer from "./orderReducer";
 import filterCategoriesReducer from "./filterCategoriesReducer";
 import filterCuisinesReducer from "./filterCuisinesReducer";
 
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
 	orders: ordersReduce,
 
 	search: searchReducer,
+	order: orderReducer,
 	filterCategories: filterCategoriesReducer,
 	filterCuisines: filterCuisinesReducer,
 });

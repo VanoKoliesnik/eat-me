@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Segment, Card, Grid, Image, Header, Icon } from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
 
 import Loading from "./Loading";
 import Reload from "./Reload";
 
 import { fetchEstablishments } from "../actions/fetchedActions/establishmentsActions";
+
+import { SELECTED_ESTABLISHMENT_ID } from "../utilities/constants";
 
 const EstablishmentsList = ({
 	dispatch,
@@ -89,7 +91,16 @@ const EstablishmentsList = ({
 				) : (
 					filteredEstablishments.map((establishment) =>
 						isValid(establishment) ? (
-							<Card href="#" key={establishment.id}>
+							<Card
+								href="/establishment"
+								key={establishment.id}
+								onClick={() =>
+									localStorage.setItem(
+										SELECTED_ESTABLISHMENT_ID,
+										establishment.id
+									)
+								}
+							>
 								<Image src={establishment.image} centered rounded />
 								<Card.Content>
 									<Card.Header>{establishment.name}</Card.Header>
