@@ -10,6 +10,8 @@ import fastCustomersReducer from "./fetchedReducers/fastCustomersReducer";
 import dishesReducer from "./fetchedReducers/dishesReducer";
 import ordersReduce from "./fetchedReducers/ordersReducer";
 
+import postOrderReducer from "./fetchedReducers/postOrderReducer";
+
 import searchReducer from "./searchReducer";
 import orderReducer from "./orderReducer";
 import filterCategoriesReducer from "./filterCategoriesReducer";
@@ -25,6 +27,8 @@ const rootReducer = combineReducers({
 	fastCustomers: fastCustomersReducer,
 	dishes: dishesReducer,
 	orders: ordersReduce,
+
+	postOrder: postOrderReducer,
 
 	search: searchReducer,
 	order: orderReducer,

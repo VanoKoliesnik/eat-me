@@ -90,34 +90,36 @@ const Establishment = ({
 				</Grid.Row>
 
 				<Grid.Row>
-					<Grid padded>
-						<Grid.Column
-							mobile={16}
-							tablet={5}
-							computer={5}
-							largeScreen={4}
-							widescreen={3}
-						>
-							<FilterDishesCategoriesCuisines />
-						</Grid.Column>
+					<Grid.Column>
+						<Grid padded>
+							<Grid.Column
+								mobile={16}
+								tablet={5}
+								computer={5}
+								largeScreen={4}
+								widescreen={3}
+							>
+								<FilterDishesCategoriesCuisines />
+							</Grid.Column>
 
-						<Grid.Column
-							mobile={16}
-							tablet={11}
-							computer={11}
-							largeScreen={12}
-							widescreen={13}
-						>
-							<Segment.Group>
-								<Segment>
-									<Search fluid />
-								</Segment>
-								<Segment basic>
-									<DishesList dishes={establishment.menu} />
-								</Segment>
-							</Segment.Group>
-						</Grid.Column>
-					</Grid>
+							<Grid.Column
+								mobile={16}
+								tablet={11}
+								computer={11}
+								largeScreen={12}
+								widescreen={13}
+							>
+								<Segment.Group>
+									<Segment>
+										<Search fluid />
+									</Segment>
+									<Segment basic>
+										<DishesList dishes={establishment.menu} />
+									</Segment>
+								</Segment.Group>
+							</Grid.Column>
+						</Grid>
+					</Grid.Column>
 				</Grid.Row>
 			</Grid>
 		</>

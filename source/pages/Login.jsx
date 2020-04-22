@@ -28,11 +28,6 @@ const Login = ({ dispatch, accounts, accountsLoading, accountsHasErrors }) => {
 		let valid = false;
 
 		accounts.map((accountData) => {
-			console.log(accountData.username);
-			console.log(loginData.username);
-
-			console.log(accountData.password);
-			console.log(md5(accountData.password));
 			if (accountData.username === loginData.username) {
 				if (accountData.password === md5(loginData.password)) {
 					valid = true;
@@ -48,7 +43,7 @@ const Login = ({ dispatch, accounts, accountsLoading, accountsHasErrors }) => {
 		const name = e.target.name;
 		const value = e.target.value;
 
-		setLoginData(Object.assign(loginData, { [name]: value }));
+		setLoginData({ ...accountData, [name]: value });
 	};
 
 	const handleSubmit = () => {
