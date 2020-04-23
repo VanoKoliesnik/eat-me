@@ -11,6 +11,7 @@ import dishesReducer from "./fetchedReducers/dishesReducer";
 import ordersReduce from "./fetchedReducers/ordersReducer";
 
 import postOrderReducer from "./fetchedReducers/postOrderReducer";
+import postAccountReducer from "./fetchedReducers/postAccountReducer";
 
 import searchReducer from "./searchReducer";
 import orderReducer from "./orderReducer";
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
 	orders: ordersReduce,
 
 	postOrder: postOrderReducer,
+	postAccount: postAccountReducer,
 
 	search: searchReducer,
 	order: orderReducer,

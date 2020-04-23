@@ -3,8 +3,11 @@ export const API_URL = "http://eatmeapi.herokuapp.com/api";
 // Begin LocalStorage
 
 export const SELECTED_ESTABLISHMENT_ID = "selectedEstablishmentId";
-export const SELECTED_DISHES = "selectedDishes";
+
+export const ORDER_DISHES = "selectedDishes";
 export const ORDER_QUANTITY = "orderQuantity";
+export const ORDER_TOTAL_PRICE = "orderTotalPrice";
+
 export const ACCOUNT_ID = "accountId";
 
 // End localStorage
@@ -47,6 +50,10 @@ export const POST_ORDER = "POST_ORDER";
 export const POST_ORDER_SUCCESS = "POST_ORDER_SUCCESS";
 export const POST_ORDER_FAILURE = "POST_ORDER_FAILURE";
 
+export const POST_ACCOUNT = "POST_ACCOUNT";
+export const POST_ACCOUNT_SUCCESS = "POST_ACCOUNT_SUCCESS";
+export const POST_ACCOUNT_FAILURE = "POST_ACCOUNT_FAILURE";
+
 export const SEARCH_CHANGED = "SEARCH_CHANGED";
 export const SEARCH_TYPING_START = "SEARCH_TYPING_START";
 export const SEARCH_TYPING_END = "SEARCH_TYPING_END";
@@ -60,5 +67,6 @@ export const FILTER_CUISINES_UNCHECKED_ALL = "FILTER_CUISINES_UNCHECKED_ALL";
 
 export const SET_ORDER_DISHES = "SET_ORDER_DISHES";
 export const SET_ORDER_QUANTITY = "SET_ORDER_QUANTITY";
+export const SET_ORDER_TOTAL_PRICE = "SET_ORDER_TOTAL_PRICE";
 
 // End Reducers

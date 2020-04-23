@@ -6,8 +6,9 @@ import Header from "../components/Header";
 
 import { fetchAccounts } from "../actions/fetchedActions/accountsActions";
 import { fetchDishes } from "../actions/fetchedActions/dishesActions";
+import { postOrder } from "../actions/fetchedActions/postOrderActions";
 import {
-	setOrderDishe,
+	setOrderDish,
 	setOrderDishSubstraction,
 	setOrderDishRemove,
 } from "../actions/orderActions";
@@ -16,7 +17,7 @@ import { ACCOUNT_ID } from "../utilities/constants";
 
 const Dishes = ({ dispatch, dishes, dishesQuantity }) => {
 	const handleAdditionQuantity = (id) => {
-		dispatch(setOrderDishe(id));
+		dispatch(setOrderDish(id));
 	};
 
 	const handleSubstractionQuantity = (id, quantity) => {
@@ -107,7 +108,14 @@ const Dishes = ({ dispatch, dishes, dishesQuantity }) => {
 	);
 };
 
-const OrderCredentials = ({ defaultAccount = {}, orderQuantity, orderTotalPrice }) => {
+const OrderCredentials = ({
+	dispatch,
+	defaultAccount = {},
+	dishes,
+	orderDishes,
+	orderQuantity,
+	orderTotalPrice,
+}) => {
 	const [paymentMethodOptions] = useState([
 		{
 			key: "cash",
@@ -127,7 +135,7 @@ const OrderCredentials = ({ defaultAccount = {}, orderQuantity, orderTotalPrice 
 		paymentMethod: "",
 		quantity: "",
 		totalPrice: "",
-		comment: "",
+		orderDetail: "",
 	});
 
 	useEffect(() => {
@@ -154,8 +162,18 @@ const OrderCredentials = ({ defaultAccount = {}, orderQuantity, orderTotalPrice 
 	};
 
 	const handleSubmit = () => {
-		console.log("Submited!");
-		console.log(orderData);
+		const order = {
+			name: orderData.name,
+			surname: orderData.surname,
+			customerPhone: orderData.customerPhone,
+			paymentMethod: orderData.paymentMethod,
+			orderDetail: orderData.orderDetail,
+			totalQuantity: orderData.quantity,
+			totalPrice: orderData.totalPrice,
+			orderList: dishes,
+			order_list: orderDishes,
+		};
+		dispatch(postOrder(order));
 	};
 
 	return (
@@ -210,8 +228,8 @@ const OrderCredentials = ({ defaultAccount = {}, orderQuantity, orderTotalPrice 
 							cols="15"
 							rows="3"
 							placeholder="Коментар"
-							name="comment"
-							value={orderData.comment}
+							name="orderDetail"
+							value={orderData.orderDetail}
 							onChange={handleInput}
 						></textarea>
 					</Form.Field>
@@ -310,7 +328,10 @@ const Order = ({
 				<Tab.Pane>
 					<Grid>
 						<OrderCredentials
+							dispatch={dispatch}
 							defaultAccount={account.accounts}
+							dishes={filteredDishes}
+							orderDishes={orderDishes}
 							orderQuantity={orderQuantity}
 							orderTotalPrice={totalPrice}
 						/>

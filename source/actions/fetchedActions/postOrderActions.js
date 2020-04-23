@@ -1,30 +1,30 @@
 import {
 	API_URL,
-	POST_ORDERS,
-	POST_ORDERS_SUCCESS,
-	POST_ORDERS_FAILURE,
+	POST_ORDER,
+	POST_ORDER_SUCCESS,
+	POST_ORDER_FAILURE,
 } from "../../utilities/constants";
 
-const postOrder = () => ({ type: POST_ORDERS });
+const postOrderBegin = () => ({ type: POST_ORDER });
 const postOrderSuccess = (response) => ({
-	type: POST_ORDERS_SUCCESS,
+	type: POST_ORDER_SUCCESS,
 	payload: response,
 });
-const postOrderFailure = () => ({ type: POST_ORDERS_FAILURE });
+const postOrderFailure = () => ({ type: POST_ORDER_FAILURE });
 
 export function postOrder(order) {
 	return async (dispatch) => {
-		dispatch(postOrder());
+		dispatch(postOrderBegin());
 
 		try {
-			const response = await fetch(`${API_URL}/orders/`, {
+			const request = await fetch(`${API_URL}/orders/`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(order),
 			});
-			const response = await response.json();
+			const response = await request.json();
 
 			dispatch(postOrderSuccess(response));
 		} catch (error) {

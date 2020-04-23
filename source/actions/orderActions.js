@@ -1,8 +1,10 @@
 import {
+	ORDER_DISHES,
 	ORDER_QUANTITY,
-	SELECTED_DISHES,
+	ORDER_TOTAL_PRICE,
 	SET_ORDER_DISHES,
 	SET_ORDER_QUANTITY,
+	SET_ORDER_TOTAL_PRICE,
 } from "../utilities/constants";
 
 export const setOrderDishes = (orderDishes) => ({
@@ -13,17 +15,49 @@ export const setOrderQuantity = (orderQuantity) => ({
 	type: SET_ORDER_QUANTITY,
 	payload: orderQuantity,
 });
+export const setOrderTotalPrice = (orderTotalPrice) => ({
+	type: SET_ORDER_TOTAL_PRICE,
+	payload: orderTotalPrice,
+});
 
-export const setOrderDishe = (dishId) => {
+const setLocalStorageDispatch = (dispatch, dish, quantity = 0, totalPrice = 0) => {
+	localStorage.setItem(ORDER_DISHES, JSON.stringify(dish));
+	dispatch(setOrderDishes(dish));
+
+	localStorage.setItem(ORDER_QUANTITY, quantity);
+	dispatch(setOrderQuantity(quantity));
+
+	localStorage.setItem(ORDER_TOTAL_PRICE, totalPrice);
+	dispatch(setOrderTotalPrice(totalPrice));
+};
+
+export const setOrderDish = (dishId) => {
 	return (dispatch, getState) => {
 		const quantity = getState().order.quantity;
+		const totalPrice = getState().order.totalPrice;
+		const dishes = [...getState().dishes.dishes];
+
 		let selectedDishes = [...getState().order.dishes];
+		let dish, selectedDish;
+
+		dishes.map((dishCash) => {
+			if (dishCash.id === dishId) {
+				dish = dishCash;
+			}
+		});
+		selectedDishes.map((dishCash) => {
+			if (dishCash.id === dishId) {
+				selectedDish = dishCash;
+			}
+		});
 
 		if (selectedDishes === []) {
-			localStorage.setItem(SELECTED_DISHES, JSON.stringify([{ id: dishId, quantity: 1 }]));
-			dispatch(setOrderDishes([{ id: dishId, quantity: 1 }]));
-			localStorage.setItem(ORDER_QUANTITY, 1);
-			dispatch(setOrderQuantity(1));
+			setLocalStorageDispatch(
+				dispatch,
+				[{ id: dish.id, name: dish.name, quantity: 1 }],
+				1,
+				dish.price
+			);
 		} else {
 			let isExists = false;
 			let dishIdCash = null;
@@ -38,18 +72,19 @@ export const setOrderDishe = (dishId) => {
 			if (isExists) {
 				selectedDishes[dishIdCash].quantity = ++selectedDishes[dishIdCash].quantity;
 
-				localStorage.setItem(SELECTED_DISHES, JSON.stringify([...selectedDishes]));
-				dispatch(setOrderDishes([...selectedDishes]));
-				localStorage.setItem(ORDER_QUANTITY, quantity + 1);
-				dispatch(setOrderQuantity(quantity + 1));
-			} else {
-				localStorage.setItem(
-					SELECTED_DISHES,
-					JSON.stringify([...selectedDishes, { id: dishId, quantity: 1 }])
+				setLocalStorageDispatch(
+					dispatch,
+					[...selectedDishes],
+					quantity + 1,
+					totalPrice + dish.price
 				);
-				dispatch(setOrderDishes([...selectedDishes, { id: dishId, quantity: 1 }]));
-				localStorage.setItem(ORDER_QUANTITY, quantity + 1);
-				dispatch(setOrderQuantity(quantity + 1));
+			} else {
+				setLocalStorageDispatch(
+					dispatch,
+					[...selectedDishes, { id: dishId, name: dish.name, quantity: 1 }],
+					quantity + 1,
+					totalPrice + dish.price
+				);
 			}
 		}
 	};
@@ -57,10 +92,19 @@ export const setOrderDishe = (dishId) => {
 export const setOrderDishSubstraction = (dishId) => {
 	return (dispatch, getState) => {
 		const quantity = getState().order.quantity;
+		const totalPrice = getState().order.totalPrice;
+		const dishes = [...getState().dishes.dishes];
+
 		let selectedDishes = [...getState().order.dishes];
 
 		let dishIdCash = null;
+		let dish, selectedDish;
 
+		dishes.map((dishCash) => {
+			if (dishCash.id === dishId) {
+				dish = dishCash;
+			}
+		});
 		selectedDishes.map((dish, id) => {
 			if (dish.id === dishId) {
 				dishIdCash = id;
@@ -70,36 +114,56 @@ export const setOrderDishSubstraction = (dishId) => {
 		if (selectedDishes[dishIdCash].quantity > 1) {
 			selectedDishes[dishIdCash].quantity = --selectedDishes[dishIdCash].quantity;
 
-			localStorage.setItem(SELECTED_DISHES, JSON.stringify([...selectedDishes]));
-			dispatch(setOrderDishes([...selectedDishes]));
-			localStorage.setItem(ORDER_QUANTITY, quantity - 1);
-			dispatch(setOrderQuantity(quantity - 1));
+			setLocalStorageDispatch(
+				dispatch,
+				[...selectedDishes],
+				quantity - 1,
+				totalPrice - dish.price
+			);
 		} else {
-			localStorage.setItem(ORDER_QUANTITY, quantity - selectedDishes[dishIdCash].quantity);
-			dispatch(setOrderQuantity(quantity - selectedDishes[dishIdCash].quantity));
+			const dishQuantityCash = selectedDishes[dishIdCash].quantity;
+
 			selectedDishes.splice(dishIdCash, 1);
-			localStorage.setItem(SELECTED_DISHES, JSON.stringify([...selectedDishes]));
-			dispatch(setOrderDishes([...selectedDishes]));
+
+			setLocalStorageDispatch(
+				dispatch,
+				[...selectedDishes],
+				quantity - dishQuantityCash,
+				totalPrice - dish.price
+			);
 		}
 	};
 };
 export const setOrderDishRemove = (dishId) => {
 	return (dispatch, getState) => {
 		const quantity = getState().order.quantity;
+		const totalPrice = getState().order.totalPrice;
+		const dishes = [...getState().dishes.dishes];
+
 		let selectedDishes = [...getState().order.dishes];
-
 		let dishIdCash = null;
+		let dish;
 
+		dishes.map((dishCash) => {
+			if (dishCash.id === dishId) {
+				dish = dishCash;
+			}
+		});
 		selectedDishes.map((dish, id) => {
 			if (dish.id === dishId) {
 				dishIdCash = id;
 			}
 		});
 
-		localStorage.setItem(ORDER_QUANTITY, quantity - selectedDishes[dishIdCash].quantity);
-		dispatch(setOrderQuantity(quantity - selectedDishes[dishIdCash].quantity));
+		const dishQuantityCash = selectedDishes[dishIdCash].quantity;
+
 		selectedDishes.splice(dishIdCash, 1);
-		localStorage.setItem(SELECTED_DISHES, JSON.stringify([...selectedDishes]));
-		dispatch(setOrderDishes([...selectedDishes]));
+
+		setLocalStorageDispatch(
+			dispatch,
+			[...selectedDishes],
+			quantity - dishQuantityCash,
+			totalPrice - dish.price * dishQuantityCash
+		);
 	};
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Card, Image, Icon } from "semantic-ui-react";
 
-import { setOrderDishe, setOrderQuantity } from "../actions/orderActions";
+import { setOrderDish, setOrderQuantity } from "../actions/orderActions";
 
 const DishesList = ({
 	dishes,
@@ -67,7 +67,7 @@ const DishesList = ({
 	};
 
 	const handleDish = (dishId) => {
-		dispatch(setOrderDishe(dishId));
+		dispatch(setOrderDish(dishId));
 	};
 
 	return (

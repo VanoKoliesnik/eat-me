@@ -9,6 +9,7 @@ import FilterDishesCategoriesCuisines from "../components/FilterDishesCategories
 import Search from "../components/Search";
 import DishesList from "../components/DishesList";
 
+import { fetchDishes } from "../actions/fetchedActions/dishesActions";
 import { fetchEstablishments } from "../actions/fetchedActions/establishmentsActions";
 
 import { SELECTED_ESTABLISHMENT_ID } from "../utilities/constants";
@@ -67,6 +68,7 @@ const Establishment = ({
 	useEffect(() => {
 		let establishmentId = localStorage.getItem(SELECTED_ESTABLISHMENT_ID);
 		dispatch(fetchEstablishments(establishmentId));
+		dispatch(fetchDishes());
 	}, [dispatch]);
 
 	const reload = () => {

@@ -43,7 +43,7 @@ const Login = ({ dispatch, accounts, accountsLoading, accountsHasErrors }) => {
 		const name = e.target.name;
 		const value = e.target.value;
 
-		setLoginData({ ...accountData, [name]: value });
+		setLoginData({ ...loginData, [name]: value });
 	};
 
 	const handleSubmit = () => {
