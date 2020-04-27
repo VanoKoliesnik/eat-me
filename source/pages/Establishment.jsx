@@ -18,11 +18,7 @@ const EstablishmentHeader = ({ establishment }) => {
 	return (
 		<>
 			<Grid.Column mobile={16} tablet={5} computer={5} largeScreen={4} widescreen={3}>
-				{/* <Image src={establishment.image} centered rounded /> */}
-				<img
-					src="https://seeklogo.com/images/F/fornetti-logo-64401BFBAE-seeklogo.com.gif"
-					alt=""
-				/>
+				<Image src={establishment.image} centered rounded />
 			</Grid.Column>
 			<Grid.Column mobile={16} tablet={11} computer={11} largeScreen={12} widescreen={13}>
 				<Grid.Row>

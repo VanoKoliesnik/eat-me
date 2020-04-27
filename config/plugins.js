@@ -1,8 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 module.exports = [
-	new LodashModuleReplacementPlugin(),
 	new HtmlWebpackPlugin({
 		template: "./source/public/establishments.html",
 		filename: "./establishments.html",

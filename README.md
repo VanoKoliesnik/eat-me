@@ -16,12 +16,13 @@ For production:
 
 ```
 npm run build
+npm run start
 ```
 
 For development:
 
 ```
-npm run start
+npm run start:dev
 ```
 
 Follow the White Rabbit. 🐇
