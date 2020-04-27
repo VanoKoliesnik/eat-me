@@ -112,7 +112,6 @@ const Header = ({ dispatch, orderQuantity, accountId }) => {
 	const [logoEmoji] = useState(selectEmoji);
 	const [menuItems] = useState([
 		{ title: "Головна", href: "/" },
-		{ title: "Заклади", href: "/establishments" },
 		{ title: "Замовлення", href: "/order" },
 		{ title: "Логін", href: "/login" },
 		{ title: "Реєстрація", href: "/registration" },

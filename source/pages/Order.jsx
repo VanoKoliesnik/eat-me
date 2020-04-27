@@ -314,9 +314,9 @@ const Order = ({
 
 	orderDishes,
 	orderQuantity,
+	orderTotalPrice,
 }) => {
 	const [filteredDishes, setFilteredDishes] = useState([]);
-	const [totalPrice, setTotalPrice] = useState("");
 
 	useEffect(() => {
 		dispatch(getAccountId());
@@ -344,18 +344,6 @@ const Order = ({
 	useEffect(() => {
 		setFilteredDishes(filterDishes(dishes));
 	}, [dishes]);
-
-	useEffect(() => {
-		let totalPriceCash = 0;
-
-		filteredDishes.map((dish) => {
-			for (let i = 0; i < dish.quantity; i++) {
-				totalPriceCash = totalPriceCash + dish.price;
-			}
-		});
-
-		setTotalPrice(totalPriceCash);
-	}, [filteredDishes]);
 
 	const reload = () => {
 		dispatch(getAccountId());
@@ -411,7 +399,7 @@ const Order = ({
 								dishes={filteredDishes}
 								orderDishes={orderDishes}
 								orderQuantity={orderQuantity}
-								orderTotalPrice={totalPrice}
+								orderTotalPrice={orderTotalPrice}
 							/>
 						)}
 					</Grid>
@@ -430,8 +418,9 @@ const Order = ({
 							<Message.Header>Ви не авторизовані!</Message.Header>
 							<Message.Content>
 								<p>
-									<a href="/registration">Створіть акаунт</a> або{" "}
-									<a href="/login">увійдіть</a> під своїм обліковим записом
+									<a href="/login">Увійдіть</a> або{" "}
+									<a href="/registration">створіть акаунт</a> для оформлення
+									замовлення
 								</p>
 							</Message.Content>
 						</Message>
@@ -460,6 +449,7 @@ const mapStateToProps = (state) => ({
 
 	orderDishes: state.order.dishes,
 	orderQuantity: state.order.quantity,
+	orderTotalPrice: state.order.totalPrice,
 });
 
 export default connect(mapStateToProps)(Order);

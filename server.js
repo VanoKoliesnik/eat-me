@@ -30,7 +30,7 @@ const routes = [
 	},
 	{
 		url: "*",
-		template: "order",
+		template: "establishments",
 	},
 ];
 
