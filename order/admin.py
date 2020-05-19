@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
             'fields': ['paymentMethod', 'orderListTextField', 'totalPrice', 'totalQuantity', 'orderDetail']
         }),
         ('Статус оплати', {
-            'fields': ['paid']
+            'fields': ['paid', 'delivered']
         }),
     )
 
