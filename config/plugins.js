@@ -20,6 +20,9 @@ const HtmlWebpackckPluginData = [
 	{
 		file: "order",
 	},
+	{
+		file: "orders",
+	},
 ];
 
 module.exports = [

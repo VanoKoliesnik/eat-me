@@ -77,17 +77,13 @@ const Dishes = ({ dispatch, dishes, dishesQuantity }) => {
 												<Grid.Column>
 													<Button
 														icon
-														onClick={() =>
-															handleAdditionQuantity(dish.id)
-														}
+														onClick={() => handleAdditionQuantity(dish.id)}
 													>
 														<Icon name="add" color="green" />
 													</Button>
 													<Button
 														icon
-														onClick={() =>
-															handleSubstractionQuantity(dish.id)
-														}
+														onClick={() => handleSubstractionQuantity(dish.id)}
 													>
 														<Icon name="minus" color="yellow" />
 													</Button>
@@ -95,9 +91,7 @@ const Dishes = ({ dispatch, dishes, dishesQuantity }) => {
 												<Grid.Column>
 													<Button
 														icon
-														onClick={() =>
-															handleRemoveQuantity(dish.id)
-														}
+														onClick={() => handleRemoveQuantity(dish.id)}
 													>
 														<Icon name="trash alternate" color="red" />
 													</Button>
@@ -122,6 +116,7 @@ const OrderCredentials = ({
 	orderDishes,
 	orderQuantity,
 	orderTotalPrice,
+	accountId,
 }) => {
 	const [paymentMethodOptions] = useState([
 		{
@@ -198,6 +193,7 @@ const OrderCredentials = ({
 			totalPrice: orderData.totalPrice,
 			orderList: dishes,
 			orderListTextField: JSON.stringify(orderDishes),
+			user_id: accountId,
 		};
 		if (isValid(order)) {
 			toast({
@@ -226,7 +222,13 @@ const OrderCredentials = ({
 
 	return (
 		<>
-			<Grid.Column mobile={16} tablet={8} computer={8} largeScreen={6} widescreen={6}>
+			<Grid.Column
+				mobile={16}
+				tablet={8}
+				computer={8}
+				largeScreen={6}
+				widescreen={6}
+			>
 				<Form>
 					<Form.Field required>
 						<label>Ім'я</label>
@@ -334,7 +336,9 @@ const Order = ({
 		dishes.map((dish) => {
 			orderDishes.map((orderDish) => {
 				if (dish.id === orderDish.id)
-					filteredDishes.push(Object.assign(dish, { quantity: orderDish.quantity }));
+					filteredDishes.push(
+						Object.assign(dish, { quantity: orderDish.quantity })
+					);
 			});
 		});
 
@@ -395,6 +399,7 @@ const Order = ({
 						) : (
 							<OrderCredentials
 								dispatch={dispatch}
+								accountId={accountId}
 								defaultAccount={account.accounts}
 								dishes={filteredDishes}
 								orderDishes={orderDishes}

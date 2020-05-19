@@ -36,7 +36,12 @@ const ProfileData = ({ account }) => {
 	);
 };
 
-const ProfileEditMode = ({ dispatch, account, patchAccountLoading, reload }) => {
+const ProfileEditMode = ({
+	dispatch,
+	account,
+	patchAccountLoading,
+	reload,
+}) => {
 	const [newAccountData, setNewAccountData] = useState({
 		id: account.id,
 		first_name: account.first_name,
@@ -62,7 +67,10 @@ const ProfileEditMode = ({ dispatch, account, patchAccountLoading, reload }) => 
 
 		for (let property in newAccountData) {
 			if (property === "newPassword" || property === "oldPassword") {
-				if (newAccountData[property] !== "" && newAccountData[property] !== "") {
+				if (
+					newAccountData[property] !== "" &&
+					newAccountData[property] !== ""
+				) {
 					if (account.password !== md5(newAccountData.oldPassword)) {
 						valid = false;
 					}
@@ -253,6 +261,9 @@ const Profile = ({
 					<Button.Group vertical fluid>
 						<Button fluid onClick={() => setEditMode(!editMode)}>
 							{editMode ? "Відхилити" : "Редагувати"}
+						</Button>
+						<Button fluid onClick={() => (window.location = "/orders")}>
+							Замовлення
 						</Button>
 						<Button
 							fluid

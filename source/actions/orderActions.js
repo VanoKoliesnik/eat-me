@@ -20,7 +20,12 @@ export const setOrderTotalPrice = (orderTotalPrice) => ({
 	payload: orderTotalPrice,
 });
 
-const setLocalStorageDispatch = (dispatch, dish, quantity = 0, totalPrice = 0) => {
+const setLocalStorageDispatch = (
+	dispatch,
+	dish,
+	quantity = 0,
+	totalPrice = 0
+) => {
 	localStorage.setItem(ORDER_DISHES, JSON.stringify(dish));
 	dispatch(setOrderDishes(dish));
 
@@ -83,7 +88,8 @@ export const setOrderDish = (dishId) => {
 			});
 
 			if (isExists) {
-				selectedDishes[dishIdCash].quantity = ++selectedDishes[dishIdCash].quantity;
+				selectedDishes[dishIdCash].quantity = ++selectedDishes[dishIdCash]
+					.quantity;
 
 				setLocalStorageDispatch(
 					dispatch,
@@ -102,6 +108,7 @@ export const setOrderDish = (dishId) => {
 		}
 	};
 };
+
 export const setOrderDishSubstraction = (dishId) => {
 	return (dispatch, getState) => {
 		const quantity = getState().order.quantity;
@@ -125,7 +132,8 @@ export const setOrderDishSubstraction = (dishId) => {
 		});
 
 		if (selectedDishes[dishIdCash].quantity > 1) {
-			selectedDishes[dishIdCash].quantity = --selectedDishes[dishIdCash].quantity;
+			selectedDishes[dishIdCash].quantity = --selectedDishes[dishIdCash]
+				.quantity;
 
 			setLocalStorageDispatch(
 				dispatch,
@@ -147,6 +155,7 @@ export const setOrderDishSubstraction = (dishId) => {
 		}
 	};
 };
+
 export const setOrderDishRemove = (dishId) => {
 	return (dispatch, getState) => {
 		const quantity = getState().order.quantity;

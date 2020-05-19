@@ -12,15 +12,22 @@ const getOrdersSuccess = (orders) => ({
 });
 const getOrdersFailure = () => ({ type: GET_ORDERS_FAILURE });
 
-export function fetchOrders() {
+export function fetchOrders(accountId) {
 	return async (dispatch) => {
 		dispatch(getOrders());
 
 		try {
 			const response = await fetch(`${API_URL}/orders/`);
 			const data = await response.json();
+			const filteredData = [];
 
-			dispatch(getOrdersSuccess(data));
+			data.map((item) => {
+				if (item.user_id !== null && item.user_id === accountId) {
+					filteredData.push(item);
+				}
+			});
+
+			dispatch(getOrdersSuccess(filteredData));
 		} catch (error) {
 			dispatch(getOrdersFailure());
 		}
