@@ -58,7 +58,9 @@ class Order(models.Model):
         return totalCost
     get_cost.short_description = 'Сума'
 
-    paid = models.BooleanField(default=False, verbose_name='Оплата')
+    paid = models.BooleanField(default=False, verbose_name='Оплачено')
+    
+    delivered = models.BooleanField(default=False, verbose_name='Доставлено')
 
     def __str__(self):
         return '{0} {1}'.format(self.name, self.surname)
