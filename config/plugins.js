@@ -32,7 +32,7 @@ module.exports = [
 				template: `./source/public/${data.file}.html`,
 				favicon: favicon,
 				filename: `./${data.file}.html`,
-				chunks: ["common", data.file],
+				chunks: ["common", "background", data.file],
 			})
 	),
 ];

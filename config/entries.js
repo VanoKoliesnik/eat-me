@@ -1,5 +1,6 @@
 module.exports = {
 	common: "./source/scripts/common.js",
+	background: "./source/scripts/background-particles.js",
 	login: "./source/scripts/login.jsx",
 	order: "./source/scripts/order.jsx",
 	orders: "./source/scripts/orders.jsx",
