@@ -1,4 +1,26 @@
+body {
+	font-size: 14px;
+}
 #particles-js {
+	position: fixed;
+	/* !!! */
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	/* background-color: red; */
+	/* !!! */
+	user-select: none;
+	opacity: .6;
+	z-index: -1337;
+}
+#particles-js > .background_item {
+	position: absolute;
+	font-size: 2rem;
+	display: inline;
+}
+
+/* #particles-js {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -8,7 +30,7 @@
 	background-repeat: no-repeat;
 	background-size: 20%;
 	background-position: 50% 50%;
-}
+} */
 #app {
 	position: absolute;
 	top: 0;
