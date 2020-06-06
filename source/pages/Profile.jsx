@@ -269,7 +269,7 @@ const Profile = ({
 						<List.Item>
 							<List.Content floated="right">
 								<Button onClick={() => (window.location = "/orders")}>
-									Замовлення
+									Мої замовлення
 								</Button>
 							</List.Content>
 						</List.Item>

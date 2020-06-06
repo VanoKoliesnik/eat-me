@@ -10,6 +10,7 @@ import {
 	Button,
 	Form,
 	Dropdown,
+	Card,
 } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import "react-semantic-toasts/styles/react-semantic-alert.css";
@@ -44,20 +45,19 @@ const Dishes = ({ dispatch, dishes, dishesQuantity }) => {
 
 	return (
 		<>
-			{dishes.map((dish) =>
-				dishesQuantity.map((dishQuantity) =>
-					dish.id === dishQuantity.id ? (
-						<Grid.Column width={16} key={dish.id}>
-							<Grid>
-								<Grid.Column mobile={16} tablet={6} computer={6}>
-									<Image src={dish.image} sizy="mini" centered rounded />
-								</Grid.Column>
-								<Grid.Column mobile={16} tablet={5} computer={5}>
-									<Grid.Row>
-										<h3>{dish.name}</h3>
-									</Grid.Row>
-									<Grid.Row>
-										<Grid padded>
+			<Card.Group stackable centered style={{ padding: 20 }}>
+				{dishes.map((dish) =>
+					dishesQuantity.map((dishQuantity) =>
+						dish.id === dishQuantity.id ? (
+							<Card key={dish.id}>
+								<Image src={dish.image} centered rounded />
+								<Card.Content>
+									<Card.Header>{dish.name}</Card.Header>
+								</Card.Content>
+
+								<Card.Content extra>
+									<Grid>
+										<Grid.Column width={8}>
 											<Grid.Row>
 												<Icon name="globe" />
 												<span>{dish.cuisine.name}</span>
@@ -66,45 +66,74 @@ const Dishes = ({ dispatch, dishes, dishesQuantity }) => {
 												<Icon name="food" />
 												<span>{dish.category.name}</span>
 											</Grid.Row>
-										</Grid>
-									</Grid.Row>
-								</Grid.Column>
-								<Grid.Column mobile={16} tablet={5} computer={5}>
-									<Grid padded>
-										<Grid.Row>Кіл-ть порцій: {dishQuantity.quantity}</Grid.Row>
-										<Grid.Row>
-											<Grid columns={2}>
-												<Grid.Column>
-													<Button
-														icon
-														onClick={() => handleAdditionQuantity(dish.id)}
-													>
-														<Icon name="add" color="green" />
-													</Button>
-													<Button
-														icon
-														onClick={() => handleSubstractionQuantity(dish.id)}
-													>
-														<Icon name="minus" color="yellow" />
-													</Button>
-												</Grid.Column>
-												<Grid.Column>
-													<Button
-														icon
-														onClick={() => handleRemoveQuantity(dish.id)}
-													>
-														<Icon name="trash alternate" color="red" />
-													</Button>
-												</Grid.Column>
-											</Grid>
-										</Grid.Row>
+										</Grid.Column>
+										<Grid.Column width={8}>
+											<Grid.Row>
+												<Icon name="usd" />
+												<span>{dish.price} грн</span>
+											</Grid.Row>
+											<Grid.Row>
+												<Icon name="law" />
+												<span>{dish.weight} г</span>
+											</Grid.Row>
+										</Grid.Column>
 									</Grid>
-								</Grid.Column>
-							</Grid>
-						</Grid.Column>
-					) : null
-				)
-			)}
+								</Card.Content>
+
+								<Card.Content extra>
+									Кіл-ть порцій: {dishQuantity.quantity}
+								</Card.Content>
+
+								<Card.Content extra>
+									<Button icon onClick={() => handleAdditionQuantity(dish.id)}>
+										<Icon name="add" color="green" />
+									</Button>
+									<Button
+										icon
+										onClick={() => handleSubstractionQuantity(dish.id)}
+									>
+										<Icon name="minus" color="yellow" />
+									</Button>
+									<Button icon onClick={() => handleRemoveQuantity(dish.id)}>
+										<Icon name="trash alternate" color="red" />
+									</Button>
+								</Card.Content>
+							</Card>
+						) : // 				<Grid.Row>Кіл-ть порцій: {dishQuantity.quantity}</Grid.Row>
+						// 				<Grid.Row>
+						// 					<Grid columns={2}>
+						// 						<Grid.Column>
+						// 							<Button
+						// 								icon
+						// 								onClick={() => handleAdditionQuantity(dish.id)}
+						// 							>
+						// 								<Icon name="add" color="green" />
+						// 							</Button>
+						// 							<Button
+						// 								icon
+						// 								onClick={() => handleSubstractionQuantity(dish.id)}
+						// 							>
+						// 								<Icon name="minus" color="yellow" />
+						// 							</Button>
+						// 						</Grid.Column>
+						// 						<Grid.Column>
+						// 							<Button
+						// 								icon
+						// 								onClick={() => handleRemoveQuantity(dish.id)}
+						// 							>
+						// 								<Icon name="trash alternate" color="red" />
+						// 							</Button>
+						// 						</Grid.Column>
+						// 					</Grid>
+						// 				</Grid.Row>
+						// 			</Grid>
+						// 		</Grid.Column>
+						// 	</Grid>
+						// </Grid.Column>
+						null
+					)
+				)}
+			</Card.Group>
 		</>
 	);
 };
