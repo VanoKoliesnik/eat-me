@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const favicon = "./source/media/favicon-rabbit.png";
-const HtmlWebpackckPluginData = [
+const HtmlWebpackPluginData = [
 	{
 		file: "establishments",
 	},
@@ -30,7 +30,7 @@ const HtmlWebpackckPluginData = [
 ];
 
 module.exports = [
-	...HtmlWebpackckPluginData.map(
+	...HtmlWebpackPluginData.map(
 		(data) =>
 			new HtmlWebpackPlugin({
 				template: `./source/public/${data.file}.html`,
